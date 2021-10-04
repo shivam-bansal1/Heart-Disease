@@ -4,8 +4,6 @@ import streamlit as st
  
 # loading the trained model
 model = pickle.load(open('model.pkl','rb'))
- 
-@st.cache()
   
 # defining the function which will make the prediction using the data which the user inputs 
 def prediction(age,sex,chest_pain,bp,cholesterol,fbs,rest_ecg,heart_rate,exang,oldpeak,slope,ca,thal):   
@@ -64,9 +62,9 @@ def prediction(age,sex,chest_pain,bp,cholesterol,fbs,rest_ecg,heart_rate,exang,o
         [[age,sex,chest_pain,bp,cholesterol,fbs,rest_ecg,heart_rate,exang,oldpeak,slope,ca,thal]])
      
     if prediction == 0:
-        pred = 'No'
+        pred = 'Congratulations !!! No heart disease detected'
     else:
-        pred = 'Yes'
+        pred = 'Heart disease detected.Please seek doctor's advice'
     return pred
        
 # this is the main function in which we define our webpage  
@@ -105,10 +103,6 @@ def main():
     # when 'Predict' is clicked, make the prediction and store it 
     if st.button("Predict"): 
         result = prediction(age,sex,chest_pain,bp,cholesterol,fbs,rest_ecg,heart_rate,exang,oldpeak,slope,ca,thal) 
-        if result=='No' :
-            st.success('Congratulations !!! No heart disease detected')
-        else :
-            st.warning("Heart disease detected.Please seek doctor's advice")
-     
+        st.header(result)
 if __name__=='__main__': 
     main()
