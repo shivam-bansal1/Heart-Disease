@@ -64,7 +64,7 @@ def prediction(age,sex,chest_pain,bp,cholesterol,fbs,rest_ecg,heart_rate,exang,o
     if prediction == 0:
         pred = 'Congratulations !!! No heart disease detected'
     else:
-        pred = 'Heart disease detected.Please seek doctor's advice'
+        pred = "Heart disease detected.Please seek doctor's advice"
     return pred
        
 # this is the main function in which we define our webpage  
